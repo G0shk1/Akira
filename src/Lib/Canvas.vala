@@ -423,6 +423,9 @@ public class Akira.Lib.Canvas : Goo.Canvas {
         // Temporarily get the first item until multi select is implemented.
         var item = selected_bound_manager.selected_items.nth_data (0);
 
+        if (ghost != null)
+            ghost.remove ();
+
         if (show) {
             ghost = new Goo.CanvasRect (
                 null,
@@ -435,11 +438,6 @@ public class Akira.Lib.Canvas : Goo.Canvas {
             ghost.set ("parent", get_root_item ());
             ghost.can_focus = false;
             ghost.pointer_events = Goo.CanvasPointerEvents.NONE;
-            return;
-        }
-
-        if (ghost != null) {
-            ghost.remove ();
         }
     }
 
